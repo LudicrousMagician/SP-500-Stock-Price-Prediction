@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stock Price Prediction</title>
+    <style>
+      body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin:0; padding:0; }
+      h1 { text-align: center; padding: 20px; color: #333; }
+      .form-container { max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+      .form-field { margin-bottom: 15px; }
+      label { display:block; font-weight:bold; margin-bottom:5px; }
+      input, select { width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; font-size:16px; }
+      .submit-btn { width:100%; padding:12px; background:#007bff; color:white; font-size:16px; border:none; border-radius:6px; cursor:pointer; margin-top:10px; }
+      .submit-btn:hover { background:#0056b3; }
+      .prediction, .error { text-align:center; margin-top:20px; padding:15px; border-radius:8px; font-size:18px; font-weight:bold; }
+      .prediction { background-color:#d4edda; color:#155724; }
+      .error { background-color:#f8d7da; color:#721c24; }
+    </style>
+  </head>
+  <body>
+    <h1>Stock Price Prediction</h1>
+    <div class="form-container">
+      <form method="post">
+        <div class="form-field">
+          <label>Ticker</label>
+          <select name="ticker">
+            {% for t in tickers %}
+            <option value="{{ t }}" {% if form_data.ticker == t %}selected{% endif %}>{{ t }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Open</label>
+          <input type="number" step="0.01" name="open" required value="{{ form_data.open }}" />
+        </div>
+        <div class="form-field">
+          <label>High</label>
+          <input type="number" step="0.01" name="high" required value="{{ form_data.high }}" />
+        </div>
+        <div class="form-field">
+          <label>Low</label>
+          <input type="number" step="0.01" name="low" required value="{{ form_data.low }}" />
+        </div>
+        <div class="form-field">
+          <label>Close (previous)</label>
+          <input type="number" step="0.01" name="close" required value="{{ form_data.close }}" />
+        </div>
+        <div class="form-field">
+          <label>Volume</label>
+          <input type="number" step="1" name="volume" required value="{{ form_data.volume }}" />
+        </div>
+        <button type="submit" class="submit-btn">Predict</button>
+      </form>
+
+      {% if prediction %}
+      <div class="prediction">
+        Predicted Price: <span style="color: {{ prediction_color }};">{{ prediction }}</span>
+      </div>
+      {% endif %}
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+    </div>
+  </body>
+</html>

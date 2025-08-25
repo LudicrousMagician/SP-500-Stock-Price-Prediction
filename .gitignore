@@ -1,0 +1,75 @@
+# =====================
+# OS-specific files
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# Python cache and bytecode
+# =====================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =====================
+# Virtual environments
+# =====================
+venv/
+.env/
+ENV/
+
+# =====================
+# Jupyter Notebooks
+# =====================
+.ipynb_checkpoints/
+
+# =====================
+# Logs
+# =====================
+*.log
+
+# =====================
+# Django related
+# =====================
+*.sqlite3
+db.sqlite3
+/staticfiles/
+/media/
+
+# =====================
+# Superset
+# =====================
+.superset/
+.superset_cache/
+
+# =====================
+# PySpark
+# =====================
+.pyspark/
+derby.log
+metastore_db/
+
+# =====================
+# Data (raw, models, intermediate)
+# =====================
+.data/extraction/
+.data/transformation/models/
+.data/transformation/stage1/
+.data/transformation/.python-version
+
+
+# =====================
+# Build / artifacts
+# =====================
+build/
+dist/
+*.egg-info/
+*.egg
+
+# =====================
+# IDE/editor configs
+# =====================
+.vscode/
+.idea/
+*.swp
